@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <launch>
- <arg name="robot_name" default="child1"/>
+ <arg name="robot_name" default="robot0"/>
  <group ns="$(arg robot_name)">
  <node pkg="move_base" type="move_base" name="move_base" respawn="false" output="screen" >
  <rosparam file="$(find robot_description)/config/costmap_params.yaml" command="load" ns="global_costmap"/>

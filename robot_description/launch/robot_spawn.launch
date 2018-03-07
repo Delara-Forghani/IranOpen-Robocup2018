@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
- <arg name="robot_name" default="child4"/>
+ <arg name="robot_name" default="robot0"/>
  <arg name="xcoordinate" default="0.0"/>
  <arg name="ycoordinate" default="0.0"/>
  <group ns="$(arg robot_name)">
