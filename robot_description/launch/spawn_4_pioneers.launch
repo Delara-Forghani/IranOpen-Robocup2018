@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<launch>
+  <include file="$(find robot_description)/launch/robot_spawn.launch">
+    <arg name="robot_name" value="child1"/>
+    <arg name="xcoordinate" value="-3"/>
+    <arg name="ycoordinate" value="1"/>
+  </include>
+
+  <include file="$(find robot_description)/launch/robot_spawn.launch">
+    <arg name="robot_name" value="child2"/>
+    <arg name="xcoordinate" value="-2"/>
+    <arg name="ycoordinate" value="-2"/>
+  </include> 
+
+  <include file="$(find robot_description)/launch/robot_spawn.launch">
+    <arg name="robot_name" value="child3"/>
+    <arg name="xcoordinate" value="9"/>
+    <arg name="ycoordinate" value="6.5"/>
+  </include>
+ <!-- <include file="$(find robot_description)/launch/robot_spawn.launch">
+    <arg name="robot_name" value="child4"/>
+    <arg name="xcoordinate" value="8"/>
+    <arg name="ycoordinate" value="5"/>
+  </include>  -->  
+</launch>
