@@ -19,7 +19,7 @@
    <param name="publish_frequency" type="double" value="15.0" />
    <param name="tf_prefix" type="string" value="$(arg robot_name)"/>
   </node>  
-  <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop1"/> 
+ <node pkg="communication_node" type="registration_client" name="registration_client_node" output="screen"  args="$(arg robot_name)" > </node>
  </group>
 
 </launch>

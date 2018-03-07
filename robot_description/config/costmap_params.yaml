@@ -17,25 +17,7 @@ obstacles_costmap2d:
   observation_sources: laser_scan_sensor
   laser_scan_sensor: {sensor_frame: hokuyo_frame, data_type: LaserScan, topic: scan, marking: true, clearing: true, raytrace_range: 7.5, obstacle_range: 6.5}
 
-obstacles_voxel_grid:
-  origin_z:              0.0
-  z_resolution:          0.5
-  z_voxels:              15
-  unknown_threshold:     10
-  mark_threshold:        0
-  publish_voxel_map:     true
-  observation_sources:   point_cloud_sensor
-  point_cloud_sensor:  {topic: camera/camera,
-                       data_type:               PointCloud2,
-                       expected_update_rate:    0.9,
-                       observation_persistence: 0.0,
-                       marking:                 true,
-                       clearing:                true,
-                       inf_is_valid:            false,
-                       min_obstacle_height:     0.0,
-                       max_obstacle_height:     10.0,
-                       obstacle_range:          9.5,
-                       raytrace_range: 11.0}
+
 
 inflation:
   inflation_radius: 1.55

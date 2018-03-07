@@ -269,7 +269,7 @@ def burgard():
             exit();
         rate = rospy.Rate(0.5);
 
-        for k in range(int(name_space[-1]),3):
+        for k in range(int(name_space[-1]),robot_number):
             while goals_list[k]==None:
                 pass;
 
