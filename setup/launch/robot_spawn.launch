@@ -4,7 +4,7 @@
  <arg name="xcoordinate" default="0.0"/>
  <arg name="ycoordinate" default="0.0"/>
  <group ns="$(arg robot_name)">
-  <param name="robot_description" command="$(find xacro)/xacro '$(find robot_description)/urdf/pioneer3at_rc2016.urdf.xacro'"/>
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find robot_description)/urdf/pioneer3at_rc2016.urdf.xacro'"/>
 <node pkg="gazebo_ros" type="spawn_model"
           respawn="false"
           name="spawn_model"
