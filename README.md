@@ -11,6 +11,16 @@ cd ~/workspace/src
 ```
 * Clone this repository 
 ```
-git clone 
+git clone https://github.com/Delara-Forghani/Operation-BrightStar.git
+
+```
+* Now it's the time to make the catkin package 
+```
+catkin_make
+
+```
+* source the shell and variables :
+```
+source ./devel/setup.sh
 
 ```
