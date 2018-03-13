@@ -24,3 +24,18 @@ catkin_make
 source ./devel/setup.sh
 
 ```
+## Running the tests
+
+
+run the following commands:
+* $ roslaunch setup robot_world.launch
+* $ roslaunch communication_node registration_server.launch
+* $ roslaunch setup spawn_4_pioneers.launch
+* $ roslaunch communication_node update_info.launch
+* $ roslaunch setup robot_navigation.launch
+* $ roslaunch burgard burgard.launch
+* $ roslaunch setup rviz.launch 
+
+## Affiliation
+
+CRLab at AmirKabir university of Technology.
