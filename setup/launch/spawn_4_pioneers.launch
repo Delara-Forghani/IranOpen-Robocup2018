@@ -2,24 +2,24 @@
 <launch>
   <include file="$(find setup)/launch/robot_spawn.launch">
     <arg name="robot_name" value="robot0"/>
-    <arg name="xcoordinate" value="-42"/>
-    <arg name="ycoordinate" value="-4"/>
+    <arg name="xcoordinate" value="6"/>
+    <arg name="ycoordinate" value="5"/>
   </include>
 
   <include file="$(find setup)/launch/robot_spawn.launch">
     <arg name="robot_name" value="robot1"/>
-    <arg name="xcoordinate" value="-38"/>
-    <arg name="ycoordinate" value="0"/>
+    <arg name="xcoordinate" value="4"/>
+    <arg name="ycoordinate" value="3"/>
   </include> 
 
   <include file="$(find setup)/launch/robot_spawn.launch">
     <arg name="robot_name" value="robot2"/>
-    <arg name="xcoordinate" value="-42"/>
+    <arg name="xcoordinate" value="7"/>
     <arg name="ycoordinate" value="4"/>
   </include>
   <include file="$(find setup)/launch/robot_spawn.launch">
     <arg name="robot_name" value="robot3"/>
-    <arg name="xcoordinate" value="-46"/>
+    <arg name="xcoordinate" value="2"/>
     <arg name="ycoordinate" value="0"/>
   </include>   
 </launch>

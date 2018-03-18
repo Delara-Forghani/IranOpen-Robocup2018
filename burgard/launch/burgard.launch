@@ -7,19 +7,19 @@
 
 <group ns="robot0">
         <param name="namespace" value="robot0" />
-        <param name="number_of_robots" value="4" />
+        <param name="number_of_robots" value="2" />
     <node pkg="burgard" type="burgard_exploration.py" name="burgard1" output="screen" />
 
     </group>
 
   <group ns="robot1">
       <param name="namespace" value="robot1" />
-      <param name="number_of_robots" value="4" />
+      <param name="number_of_robots" value="2" />
   <node pkg="burgard" type="burgard_exploration.py" name="burgard1" output="screen" />
 
   </group>
 
-
+<!--
   <group ns="robot2">
       <param name="namespace" value="robot2" />
       <param name="number_of_robots" value="4" />
@@ -32,6 +32,6 @@
       <param name="number_of_robots" value="4" />
   <node pkg="burgard" type="burgard_exploration.py" name="burgard1" output="screen" />
 
-  </group>
+  </group> -->
 
 </launch>

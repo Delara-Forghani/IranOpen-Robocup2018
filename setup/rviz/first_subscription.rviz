@@ -12,18 +12,18 @@ Panels:
         - /Odometry1
         - /Pose1
         - /Map1
-        - /Map1/Status1
         - /RobotModel1
-        - /RobotModel1/Status1
         - /RobotModel2
         - /RobotModel3
-        - /RobotModel3/Status1
         - /RobotModel4
         - /Path1
         - /Path1/Offset1
         - /Path2
         - /Path3
         - /Path4
+        - /Map2
+        - /Map3
+        - /Map4
       Splitter Ratio: 0.54178673
     Tree Height: 435
   - Class: rviz/Selection
@@ -451,6 +451,36 @@ Visualization Manager:
       Topic: /robot3/move_base/TrajectoryPlannerROS/global_plan
       Unreliable: false
       Value: true
+    - Alpha: 0.699999988
+      Class: rviz/Map
+      Color Scheme: map
+      Draw Behind: false
+      Enabled: true
+      Name: Map
+      Topic: /robot1/map
+      Unreliable: false
+      Use Timestamp: false
+      Value: true
+    - Alpha: 0.699999988
+      Class: rviz/Map
+      Color Scheme: map
+      Draw Behind: false
+      Enabled: true
+      Name: Map
+      Topic: /robot2/map
+      Unreliable: false
+      Use Timestamp: false
+      Value: true
+    - Alpha: 0.699999988
+      Class: rviz/Map
+      Color Scheme: map
+      Draw Behind: false
+      Enabled: true
+      Name: Map
+      Topic: /robot3/map
+      Unreliable: false
+      Use Timestamp: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -476,7 +506,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 163.961487
+      Distance: 116.714432
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
@@ -491,10 +521,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.71539855
+      Pitch: 0.450398386
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 3.25539255
+      Yaw: 3.38039184
     Saved: ~
 Window Geometry:
   Displays:
