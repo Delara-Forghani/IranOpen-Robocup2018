@@ -28,7 +28,7 @@ def callback(data):
 def main():
     global robots;
     rospy.init_node("permission_granter", anonymous=True)
-    robot_list=["robot0","robot1","robot2","robot3"];
+    robot_list=["robot0","robot1"];
     for i in robot_list:
             robots.append(MyWrapper(i));
     rospy.spin();
