@@ -54,6 +54,7 @@ goal_pose=PoseStamped();
 current_goal_status = 0 ; # goal status--- PENDING=0--- ACTIVE=1---PREEMPTED=2--SUCCEEDED=3--ABORTED=4---REJECTED=5--PREEMPTING=6---RECALLING=7---RECALLED=8---LOST=9
 move_base_status_subscriber=None;
 #########################
+visited_goals_list=[];
 
 class MyWrapper:
     def __init__(self,list_index,robot_name_space):
@@ -252,6 +253,7 @@ def burgard():
     global checking_goals_publisher,checking_goals_flag;
     global current_goal_status;
     global goal_publisher,my_current_goal,other_robots_list;
+    global visited_goals_list;
     while(merged_map==None):
         pass;
     while not rospy.is_shutdown():
@@ -290,6 +292,15 @@ def burgard():
 
                 else:
                     print(name_space," goal out of range ",str(j.x),str(j.y));
+                for j in visited_goals_list:
+                    if(j==None):continue;
+                    temp_distance=math.sqrt( (j.x-frontiers[i].travel_point.x)**2 +  (j.y-frontiers[i].travel_point.y)**2);
+                    if(temp_distance<=laser_range):
+                        print(name_space,"before increment",str(frontiers[i].min_distance))
+                        frontiers[i].min_distance+=alpha*(1-temp_distance/laser_range)+10;
+                        print(name_space,"after ",str(frontiers[i].min_distance))
+                    else:
+                        print(name_space," goal out of range ",str(j.x),str(j.y));
             goals_list_lock.release();
 
         print(name_space,"sorting");
@@ -298,6 +309,7 @@ def burgard():
         print(name_space,"  goal is ",str(frontiers[0].travel_point.x),str(frontiers[0].travel_point.y));
         current_goal_status=False;
         send_goal(frontiers[0].travel_point.x,frontiers[0].travel_point.y);
+        visited_goals_list.append(Point(frontiers[0].travel_point.x,frontiers[0].travel_point.y,0.0));
         rospy.sleep(3.0);
         time_counter=0;
         while current_goal_status==False and time_counter<140:
