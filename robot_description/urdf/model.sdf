@@ -376,11 +376,11 @@
           </cylinder>
         </geometry>
       </collision>
-      <sensor type="ray" name="lms200">
+      <sensor type="gpu_ray" name="lms200">
         <always_on>true</always_on>
         <update_rate>30</update_rate>
         <pose>0 0 0 0 0 0</pose>
-        <visualize>false</visualize>
+        <visualize>true</visualize>
         <ray>
           <scan>
             <horizontal>
@@ -396,15 +396,24 @@
             <resolution>0.01</resolution>
           </range>
         </ray>
+        <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_gpu_laser.so">
+         <gaussianNoise>0.005</gaussianNoise>
+         <alwaysOn>true</alwaysOn>
+         <updateRate>30</updateRate>
+         <topicName>scan</topicName>
+         <frameName>hokuyo_frame</frameName>
+        </plugin>
+<!--
         <plugin name="gazebo_ros_hokuyo_controller" filename="libgazebo_ros_laser.so">
-         <!-- <robotNamespace>pioneer3at_ros4</robotNamespace> -->
+         <!-- <robotNamespace>pioneer3at_ros4</robotNamespace> --
           <gaussianNoise>0.005</gaussianNoise>
           <alwaysOn>true</alwaysOn>
           <updateRate>30</updateRate>
           <topicName>scan</topicName>
           <frameName>hokuyo_frame</frameName>
-        </plugin>
-      </sensor>
+        </plugin> 
+-->
+     </sensor>
     </link>
     <joint name="hokuyo_joint" type="revolute">
       <parent>chassis</parent>
