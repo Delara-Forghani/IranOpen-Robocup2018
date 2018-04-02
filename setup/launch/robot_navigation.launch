@@ -7,7 +7,7 @@
   <include file="$(find setup)/launch/move_base.launch">
     <arg name="robot_name" value="robot0"/>
   </include>
-<!--
+
   <include file="$(find setup)/launch/gmapping.launch">
     <arg name="robot_name" value="robot1"/>
   </include>
@@ -30,5 +30,5 @@
 
   <include file="$(find setup)/launch/move_base.launch">
     <arg name="robot_name" value="robot3"/>
-  </include> -->
+  </include> 
 </launch>
