@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<launch>
+ <arg name="PI" default="3.1415926535897931" />
+ <group ns="robot0">
+  <node pkg="victim_detection" type="find_victim_pose" name="victim_position" output="screen">
+    <param name="robot_namespace" value="robot0"/>
+    <param name="number-of-rays" type="int" value="181"/>
+    <param name="width-of-image" type="int" value="320"/>
+    <param name="angle-range-camera" value="(1.047 * 180)/PI"/>
+    <!--<param name="angle-range-laser" type ="int" value="2*((1.570796*180)/PI)"/> -->
+    <param name="angle-range-laser" type ="int" value="180"/>
+  </node>
+ </group>
+</launch>

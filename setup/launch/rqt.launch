@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+
+  
+   <node pkg="rqt_gui"  type="rqt_gui"    name="rqt_gui"  args="--perspective-file $(find setup)/rviz/imageRQT.perspective" />
+
+
+</launch>
