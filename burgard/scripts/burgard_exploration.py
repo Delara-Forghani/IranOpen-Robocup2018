@@ -292,7 +292,7 @@ def burgard():
 
                 else:
                     print(name_space," goal out of range ",str(j.x),str(j.y));
-                for j in visited_goals_list:
+            for j in visited_goals_list:
                     if(j==None):continue;
                     temp_distance=math.sqrt( (j.x-frontiers[i].travel_point.x)**2 +  (j.y-frontiers[i].travel_point.y)**2);
                     if(temp_distance<=laser_range):
