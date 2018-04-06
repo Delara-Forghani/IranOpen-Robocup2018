@@ -8,7 +8,7 @@ from nav_msgs.srv import GetPlan ,GetPlanRequest,GetMap;
 from nav_msgs.msg import Path , OccupancyGrid, Odometry;
 from geometry_msgs.msg import Point , PoseStamped
 from std_msgs.msg import Bool;
-from burgard.srv import goal_report;
+from burgard.srv import *;
 import roslib;
 import actionlib;
 from actionlib_msgs.msg import *;
@@ -62,15 +62,15 @@ class MyWrapper:
                 self.map_clients.append(rospy.ServiceProxy("/robot"+str(i)+"/dynamic_map", GetMap));
             except rospy.ServiceException, e:
                 print "Service call failed: %s"%e
-        self.map_subscriber=rospy.Subscriber("/"+name_space[-1]+"/inbox_Map", Data_Map, self.set_Map);
+
     def set_Map(self):
         global merged_map_lock;
         global merged_map;
         merged_map_lock.acquire();
-        map_data=self.map_clients[0];
+        map_data=self.map_clients[0]();
         merged_map=map_data.map;
         for i in range(1,number_of_robots):
-            map_data=self.map_clients[i];
+            map_data=self.map_clients[i]();
             temp_map=np.array([map_data.map.data,merged_map.data]);
             merged_map.data=list(np.max(temp_map,axis=0));
         merged_map_lock.release();
@@ -80,7 +80,7 @@ class MyWrapper:
         a=int(goal_data.robot_name[-1]);
         if(a>self.robot_number):
             a=a-1;
-        print(name_space,"new goal from",self.robot_name);
+        print(name_space,"new goal from");
         goals_list[a]=Point(goal_data.goal_x,goal_data.goal_y,0.0);
         goals_list_lock.release();
         return goal_reportResponse(0);
@@ -161,8 +161,8 @@ def send_goal(goal_x,goal_y):
     global move_client_goal_;
     global goal_pose;
     global goal_clients;
-    for i in goal_clients:
-        i(goal_x,goal_y,name_space);
+    for i in range(len(goal_clients)):
+        goal_clients[i](goal_x,goal_y,name_space);
 
         # set goal
     goal_pose.pose.position.x = goal_x;
@@ -201,8 +201,6 @@ def burgard():
     global current_goal_status;
     global OurWrapper;
     global visited_goals_list;
-    while(merged_map==None):
-        pass;
     while not rospy.is_shutdown():
         OurWrapper.set_Map();
         merged_map_lock.acquire();
@@ -294,7 +292,6 @@ def main():
         except rospy.ServiceException, e:
             print "Service call failed: %s"%e
     move_base_tools();
-    map_subscriber=rospy.Subscriber("/"+name_space+"/map", OccupancyGrid, map_callback);
     odom_subscriber=rospy.Subscriber("/"+name_space+"/odom", Odometry, odom_callback);
     checking_goals_subscriber=rospy.Subscriber("/"+name_space+"/checking_goals_response", Bool, checking_goals_response_callback);
     checking_goals_publisher=rospy.Publisher("/"+name_space+"/checking_goals_request", Bool,queue_size=15);

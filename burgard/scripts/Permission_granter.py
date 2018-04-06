@@ -10,8 +10,10 @@ class MyWrapper:
         self.name_space=robot_name_space;
         self.checking_goals_requst_handler=rospy.Subscriber("/"+robot_name_space+"/checking_goals_request", Bool, self.request_handler);
         self.checking_goals_responser=rospy.Publisher("/"+robot_name_space+"/checking_goals_response", Bool,queue_size=15);
+        print("request came")
     def request_handler(self,input_data):
         global permission_lock;
+        print("request came")
         if(input_data.data==True):
             print(self.name_space,"permission requested");
             permission_lock.acquire();
