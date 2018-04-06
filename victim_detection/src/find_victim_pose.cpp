@@ -36,14 +36,14 @@ std::vector<victLocation> victims;
 double find_Distance(int left,int right){
     // *** should change when laser changes
     double min = 18.0;
-    //ROS_INFO("leftrange %f, rightrange %f ",range[left],range[right]);
-    //ROS_INFO("leftbeam %d, rightbeam %d ",left,right);
+    ROS_INFO("leftrange %f, rightrange %f ",range_of_laser[left],range_of_laser[right]);
+    ROS_INFO("leftbeam %d, rightbeam %d ",left,right);
     for (int i = left; i <= right; i++){
-      //ROS_INFO("beam %d, range %f ",i,range[i]);
+      ROS_INFO("beam %d, range %f ",i,range_of_laser[i]);
       if((range_of_laser[i] <= min)&&(range_of_laser[i] >= 1))
         min = range_of_laser[i];
       }
-    //ROS_INFO("distance calculated!  \n");
+    ROS_INFO("distance calculated!  \n");
     return min;
   }
 victLocation find_victim_location(double vict_angle){
@@ -104,10 +104,10 @@ int main(int argc, char **argv)
  ros::Rate pub_rate(20);
 
  nh.getParam("victim_position/robot_namespace", robot_namespace);
- nh.getParam("victim_position/width-of-image", width_of_image);
- nh.getParam("victim_position/angle-range-laser", angle_range_laser);
- nh.getParam("victim_position/angle-range-camera", angle_range_camera);
- nh.getParam("victim_position/number-of-rays",number_of_rays);
+ nh.getParam("victim_position/width_of_image", width_of_image);
+ nh.getParam("victim_position/angle_range_laser", angle_range_laser);
+ nh.getParam("victim_position/angle_range_camera", angle_range_camera);
+ nh.getParam("victim_position/number_of_rays",number_of_rays);
 
   laser_topic = '/' + robot_namespace + "/scan";
  // thermal_str = '/' + robot_namespace + "/themral_camera/image";

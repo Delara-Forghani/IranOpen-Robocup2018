@@ -7,13 +7,13 @@
  <rosparam file="$(find setup)/config/costmap_params.yaml" command="load" ns="local_costmap"/>
  <rosparam file="$(find setup)/config/global_costmap_params.yaml" command="load"/>
  <rosparam file="$(find setup)/config/local_costmap_params.yaml" command="load"/>
- <rosparam file="$(find setup)/config/base_local_planner_params.yaml" command="load" />
+ <!-- <rosparam file="$(find setup)/config/base_local_planner_params.yaml" command="load" /> -->
 
 
- <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" /> 
+ <!-- <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" /> -->  
  <param name="base_global_planner" type="string" value="navfn/NavfnROS" />
  <param name="conservative_reset_dist" type="double" value="3.0" />
- <param name="planner_frequency" type="double" value="0.25" />
+ <param name="planner_frequency" type="double" value="0.5" />
  <param name="controller_frequency" type="double" value="15.0" />
 
 
@@ -22,19 +22,19 @@
            #Robot Configuration Parameters
              max_vel_x: 1.0
              min_vel_x: 0.1
-             max_vel_theta: 2.9
-             min_vel_theta: -2.9
-             min_in_place_vel_theta: 0.2
+             max_vel_theta: 1.5
+             min_vel_theta: -1.5
+             min_in_place_vel_theta: 0.1
              escape_vel: -0.2
            #Forward Simulation Parameters
-             sim_time: 1.2
+             sim_time: 2.0
              vx_samples: 8
              vtheta_samples: 26
              sim_granularity: 0.01
              angular_sim_granularity: 0.015
 
-             acc_lim_theta: 4.9
-             acc_lim_x: 0.8
+             acc_lim_theta: 1.9
+             acc_lim_x: 1.0
              acc_lim_y: 0.0
 
              holonomic_robot: false
@@ -132,7 +132,7 @@
 
          NavfnROS:
            allow_unknown: true
-           default_tolerance: 0.4
+           default_tolerance: 0.6
            visualize_potential: true   # false
 
          GlobalPlanner:
